@@ -7,9 +7,10 @@ load_dotenv()
 
 hub_llm = HuggingFaceHub(repo_id="mrm8488/t5-base-finetuned-wikiSQL")
 
-# prompt=PromptTemplate(input_variables=['question'],template="Translate English to SQL:{question}")
-prompt="Translate English to SQL:{question}"
+prompt = PromptTemplate(
+    input_variables=["question"], template="Translate English to SQL:{question}"
+)
+# prompt = "Translate English to SQL:{question}"
 
-hub_chain= LLMChain(prompt=prompt,llm=hub_llm,verbose=True)
-
+hub_chain = LLMChain(prompt=prompt, llm=hub_llm, verbose=True)
 print(hub_chain.run("What is the average age of respondent using a mobile device"))
